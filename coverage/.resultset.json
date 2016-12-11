@@ -1,0 +1,16 @@
+{
+  "MiniTest": {
+    "coverage": {
+    },
+    "timestamp": 1481428523
+  },
+  "Unit Tests": {
+    "coverage": {
+      "/Users/blackknight_75/turing/1611/1module/projects/enigma/lib/rotors.rb": [
+        1,
+        null
+      ]
+    },
+    "timestamp": 1481425229
+  }
+}
