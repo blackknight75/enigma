@@ -1,10 +1,18 @@
 class Enigma
+  attr_reader :my_message
 
   def initialize
-    @keygen = KeyGenerator.new
     @offset = Offset.new
-    @rotors = Rotors.new
+    @encrypter = Encrypter.new
+    @my_message = ""
   end
-@keygen.key
 
+  def read_message(message)
+    @my_message = message
+    split_message(message)
+  end
+
+  def split_message(message)
+    message.chars
+  end
 end
