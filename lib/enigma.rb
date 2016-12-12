@@ -2,7 +2,6 @@ class Enigma
   attr_reader :my_message
 
   def initialize
-    @offset = Offset.new
     @encrypter = Encrypter.new
     @my_message = ""
   end

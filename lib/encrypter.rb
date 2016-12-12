@@ -2,6 +2,7 @@ class Encrypter
   attr_reader :rotor_one, :rotor_two, :rotor_three, :rotor_four
 
   def initialize
+    @offset = Offset.new
     @rotors = Rotors.new
     @rotor_one = @rotors.rotor_one
     @rotor_two = @rotors.rotor_two
