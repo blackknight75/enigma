@@ -2,9 +2,6 @@ require "pry"
 
 class Offset
 
-attr_reader :date
-  def initialize
-=======
 attr_reader :date, :keygen
   def initialize(date)
     @today = Time.now.strftime("%D").delete("/").to_i
