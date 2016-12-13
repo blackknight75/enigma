@@ -1,8 +1,8 @@
 require "pry"
 
 class Offset
-attr_reader :date, :key_offset_join
-attr_accessor :key
+attr_reader :key_offset_join
+attr_accessor :key, :date
   def initialize(date, key = KeyGenerator.new.key)
     @today = Time.now.strftime("%D").delete("/").to_i
     @date = date

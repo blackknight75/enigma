@@ -5,17 +5,16 @@ class Decrypter
     @offset = Offset.new(date)
     @rotors = Rotors.new
     @position = nil
-    # @rotor_wheel = @rotors.rotor_one
-    # @rotor_two = @rotors.rotor_two
-    # @rotor_three = @rotors.rotor_three
     @decrypted_result = []
   end
 
 
-  def encrypt(input)
+  def decrypt(input, message_key, message_date)
+    activate_offsets(message_key, message_date)
     input_characters = input.chars
-    input_characters.pop
+    # input_characters.pop
     input_characters.each_with_index do |item, index|
+      binding.pry
       rotor_calculation(item, index)
       @decrypted_result << rotors.rotor_wheel.values_at(@position)
     end
@@ -23,23 +22,28 @@ class Decrypter
   end
 
   def rotor_calculation(item, index)
-    activate_offsets
     active_rotor = @rotors.rotor_wheel
     starting_poistion = @rotors.rotor_wheel.key(item)
-    clicks = starting_poistion + @offset.key_offset_join[index]
-    @position = position_calculator(clicks)
+    clicks = @offset.key_offset_join[index]
+    position_calculator(starting_poistion, clicks, index)
+    # clicks = starting_poistion - @offset.key_offset_join[index]
+    # @position = position_calculator(clicks)
   end
 
-  def position_calculator(clicks)
-    if clicks > 83
-      clicks -= 83
-      position_calculator(clicks)
+  def position_calculator(starting_poistion, clicks, index)
+
+    if starting_poistion < clicks
+      @position = 83 - (clicks - starting_poistion)
     else
-      clicks
+      @position = (starting_poistion - clicks)
     end
   end
 
-  def activate_offsets
+  def activate_offsets(message_key, message_date)
+    if message_key != nil
+    @offset.key = message_key
+    end
+    @offset.date = (message_date.to_i)
     @offset.date_offsets
     @offset.key_array
     @offset.key_join
