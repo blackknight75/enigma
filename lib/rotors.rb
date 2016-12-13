@@ -1,5 +1,5 @@
 class Rotors
-  attr_reader :rotor_one, :rotor_two, :rotor_three, :rotor_four
+  attr_reader :rotor_wheel
 
   def initialize
     @rotor_wheel = {0 => "a", 1 => "b", 2 => "c", 3 => "d", 4 => "e", 5 => "f", 6 => "g",
@@ -16,33 +16,5 @@ class Rotors
       67 => "%", 68 => "^", 69 => "&", 70 => "*", 71 => "(", 72 => ")",
       73 => "[", 74 => "]", 75 => ",", 76 => ".", 77 => "<", 78 => ">",
       79 => ";", 80 => ":", 81 => "/", 82 => "?"}
-    @rotor_one = @rotor_wheel
-    @rotor_two = @rotor_wheel
-    @rotor_three = @rotor_wheel
-    @rotor_four = @rotor_wheel
   end
 end
-
-
-  # def rotor_one(input)
-  #   input_position = @rotor_wheel.index(input)
-  #   (offset_num).times do |num|
-  #   end
-  # end
-  #
-  # def rotor_two(input)
-  # end
-  #
-  # def rotor_three(input)
-  # end
-  #
-  # def rotor_four(input)
-  # end
-
-# @loweralpha = ("a".."z").to_a
-# @upperalpha = ("A".."Z").to_a
-# @numbers = ("0".."9").to_a
-# #how to make \ an | into string?
-# @special_chars = [" ", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")",
-#                   "[", "]", ",", ".", "<", ">", ";", ":", "/", "?"]
-# @rotor_wheel = @loweralpha + @upperalpha + @numbers + @special_chars

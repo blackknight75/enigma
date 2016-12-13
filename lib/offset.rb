@@ -1,14 +1,15 @@
 require "pry"
 
 class Offset
-attr_reader :date, :key
+attr_reader :date, :key_offset_join
+attr_accessor :key
   def initialize(date, key = KeyGenerator.new.key)
     @today = Time.now.strftime("%D").delete("/").to_i
     @date = date
     @key = key
     @date_offset = []
     @key_array = []
-    # @key = @key.key.to_i
+    @key_offset_join = []
   end
 
   def date_offsets
@@ -23,11 +24,9 @@ attr_reader :date, :key
   end
 
   def key_join
-    result = []
     @key_array.each_with_index do |num, index|
-      result << num + @date_offset[index]
+      @key_offset_join << num + @date_offset[index]
     end
-    result
   end
 
 end

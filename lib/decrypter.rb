@@ -1,4 +1,4 @@
-class Encrypter
+class Decrypter
   attr_reader :offset, :position, :rotors, :encrypted_result
 
   def initialize(date = Time.now.strftime("%D").delete("/").to_i)
@@ -8,7 +8,7 @@ class Encrypter
     # @rotor_wheel = @rotors.rotor_one
     # @rotor_two = @rotors.rotor_two
     # @rotor_three = @rotors.rotor_three
-    @encrypted_result = []
+    @decrypted_result = []
   end
 
 
@@ -17,9 +17,9 @@ class Encrypter
     input_characters.pop
     input_characters.each_with_index do |item, index|
       rotor_calculation(item, index)
-      @encrypted_result << rotors.rotor_wheel.values_at(@position)
+      @decrypted_result << rotors.rotor_wheel.values_at(@position)
     end
-    @encrypted_result.join
+    @decrypted_result.join
   end
 
   def rotor_calculation(item, index)

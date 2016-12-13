@@ -9,23 +9,16 @@ class EncrypterTest < Minitest::Test
      assert_instance_of Encrypter, encrypter
    end
 
-   def test_rotor_one_holds_characters
+   def test_rotor_wheel_holds_characters
      encrypter = Encrypter.new
-     assert_equal 83, encrypter.rotor_one.length
+     assert_equal 83, encrypter.rotors.rotor_wheel.length
    end
 
-   def test_rotor_two_holds_characters
+   def test_rotor_calculation
+     skip
      encrypter = Encrypter.new
-     assert_equal 83, encrypter.rotor_two.length
-   end
-
-   def test_rotor_three_holds_characters
-     encrypter = Encrypter.new
-     assert_equal 83, encrypter.rotor_three.length
-   end
-
-   def test_rotor_four_holds_characters
-     encrypter = Encrypter.new
-     assert_equal 83, encrypter.rotor_four.length
+     encrypter.rotor_calculation("h", 0)
+     encrypter.offset.key = "45771"
+     assert_equal 32, encrypter.encrypted_result
    end
 end
