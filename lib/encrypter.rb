@@ -1,8 +1,8 @@
 class Encrypter
-  attr_reader :rotor_one, :rotor_two, :rotor_three, :rotor_four
+  attr_reader :rotor_one, :rotor_two, :rotor_three, :rotor_four, :offset
 
-  def initialize
-    @offset = Offset.new
+  def initialize(date = Time.now.strftime("%D").delete("/").to_i)
+    @offset = Offset.new(date)
     @rotors = Rotors.new
     @rotor_one = @rotors.rotor_one
     @rotor_two = @rotors.rotor_two

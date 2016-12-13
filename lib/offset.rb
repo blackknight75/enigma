@@ -1,14 +1,14 @@
 require "pry"
 
 class Offset
-
-attr_reader :date, :keygen
-  def initialize(date)
+attr_reader :date, :key
+  def initialize(date, key = KeyGenerator.new.key)
     @today = Time.now.strftime("%D").delete("/").to_i
     @date = date
-    @keygen = KeyGenerator.new
+    @key = key
     @date_offset = []
     @key_array = []
+    # @key = @key.key.to_i
   end
 
   def date_offsets
@@ -17,8 +17,8 @@ attr_reader :date, :keygen
 
   def key_array
     @key_array = []
-    (@keygen.key.length - 1).times do |index|
-      @key_array << ((@keygen.key[index] + @keygen.key[index + 1]).to_i)# + (@date_offset[index])
+    (@key.length - 1).times do |index|
+      @key_array << ((@key[index] + @key[index + 1]).to_i)# + (@date_offset[index])
     end
   end
 

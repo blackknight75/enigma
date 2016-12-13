@@ -3,6 +3,7 @@ require './lib/offset'
 require './lib/enigma'
 require './lib/encrypter'
 require './lib/rotors'
+require './lib/key_generator'
 
 class EnigmaTest < Minitest::Test
 
@@ -20,5 +21,10 @@ class EnigmaTest < Minitest::Test
   def test_can_split_message
     enigma = Enigma.new
     assert_equal ["h", "e", "l", "p"], enigma.split_message("help")
+  end
+
+  def test_can_send_date_to_encrypter
+    enigma = Enigma.new
+    assert_equal 121016, enigma.encrypt(121016)
   end
 end

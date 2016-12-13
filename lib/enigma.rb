@@ -2,8 +2,13 @@ class Enigma
   attr_reader :my_message
 
   def initialize
-    @encrypter = Encrypter.new
     @my_message = ""
+  end
+
+  def encrypt(message = "", key = nil, date)
+    encrypter = Encrypter.new(date)
+    read_message(message)
+    encrypter.offset.date
   end
 
   def read_message(message)
