@@ -11,7 +11,11 @@ class Decrypter
   def decrypt(input, message_key, message_date)
     activate_offsets(message_key, message_date)
     input = input.chomp.chars
-    active_input = []
+    send_to_encrypter_engine(input)
+    @decrypted_result.join
+  end
+  
+  def send_to_encrypter_engine(input)
     until input.empty?
       active_input = input.shift(4)
       active_input.each_with_index do |item, index|
@@ -19,7 +23,6 @@ class Decrypter
         @decrypted_result << rotors.rotor_wheel.values_at(@position)
       end
     end
-    @decrypted_result.join
   end
 
   def rotor_calculation(item, index)

@@ -37,7 +37,7 @@
         null
       ]
     },
-    "timestamp": 1481747589
+    "timestamp": 1481753913
   },
   "Unit Tests": {
     "coverage": {
@@ -63,14 +63,25 @@
         null,
         1,
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
         4,
         4,
+        null,
         null,
         1,
         null,
         null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         1,
-        4,
         4,
         4,
         4,
@@ -87,7 +98,7 @@
         null,
         null,
         1,
-        4,
+        1,
         null,
         null
       ],
@@ -127,22 +138,21 @@
         null,
         null,
         1,
-        6,
-        6,
+        3,
+        3,
         null,
         null,
         1,
-        7,
-        7,
-        28,
+        4,
+        4,
+        16,
         null,
-        7,
+        4,
         null,
         null,
         1,
-        8,
-        32,
-        null,
+        5,
+        20,
         null,
         null,
         null
@@ -281,6 +291,6 @@
         null
       ]
     },
-    "timestamp": 1481747589
+    "timestamp": 1481753913
   }
 }
