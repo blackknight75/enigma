@@ -14,8 +14,8 @@ class Decrypter
     send_to_encrypter_engine(input)
     @decrypted_result.join
   end
-  
-  def send_to_encrypter_engine(input)
+
+  def send_to_decrypter_engine(input)
     until input.empty?
       active_input = input.shift(4)
       active_input.each_with_index do |item, index|
