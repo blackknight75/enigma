@@ -1,32 +1,31 @@
 require "pry"
 
 class Offset
-attr_reader :key_offset_join, :date_offset
-attr_accessor :key, :date
+attr_reader :key_offset_join
+attr_accessor :key, :date, :date_offset
   def initialize(date, key = KeyGenerator.new.key)
-    @today = Time.now.strftime("%D").delete("/").to_i
     @date = date
     @key = key
     @date_offset = []
-    @key_array = []
-    @key_offset_join = []
+    @key_offset_join = Array.new
   end
 
   def date_offsets
     @date_offset = ((@date ** 2) % 10000).to_s.chars.map(&:to_i)
+    create_key_array
   end
 
-  def key_array
-    @key_array = []
+  def create_key_array
+    key_array = []
     (@key.length - 1).times do |index|
-      @key_array << ((@key[index] + @key[index + 1]).to_i)# + (@date_offset[index])
+      key_array << ((@key[index] + @key[index + 1]).to_i)
     end
+    key_join(key_array)
   end
 
-  def key_join
-    @key_array.each_with_index do |num, index|
-      @key_offset_join << num + @date_offset[index]
+  def key_join(key_array)
+    key_array.each_with_index do |num, index|
+      @key_offset_join << (num + @date_offset[index])
     end
   end
-
 end

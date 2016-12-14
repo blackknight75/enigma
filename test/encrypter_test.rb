@@ -1,4 +1,5 @@
 require './test/test_helper'
+require './lib/key_generator'
 require './lib/encrypter'
 require './lib/rotors'
 require './lib/offset'
@@ -12,6 +13,11 @@ class EncrypterTest < Minitest::Test
    def test_rotor_wheel_holds_characters
      encrypter = Encrypter.new
      assert_equal 83, encrypter.rotors.rotor_wheel.length
+   end
+
+   def test_can_send_input_to_encrypt
+     encrypter = Encrypter.new
+     assert encrypter.encrypt("help")
    end
 
    def test_rotor_calculation

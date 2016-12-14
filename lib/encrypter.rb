@@ -5,17 +5,11 @@ class Encrypter
     @offset = Offset.new(date)
     @rotors = Rotors.new
     @position = nil
-    # @rotor_wheel = @rotors.rotor_one
-    # @rotor_two = @rotors.rotor_two
-    # @rotor_three = @rotors.rotor_three
     @encrypted_result = []
   end
 
-
   def encrypt(input)
-    input_characters = input.chars
-    input_characters.pop
-    input_characters.each_with_index do |item, index|
+    input.chomp.chars.each_with_index do |item, index|
       rotor_calculation(item, index)
       @encrypted_result << rotors.rotor_wheel.values_at(@position)
     end
@@ -41,7 +35,5 @@ class Encrypter
 
   def activate_offsets
     @offset.date_offsets
-    @offset.key_array
-    @offset.key_join
   end
 end
