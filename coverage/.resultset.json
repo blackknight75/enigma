@@ -1,43 +1,8 @@
 {
   "MiniTest": {
     "coverage": {
-      "/Users/blackknight_75/turing/1611/1module/projects/enigma/Rakefile": [
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        null,
-        1,
-        1,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        1,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        1,
-        1,
-        null
-      ]
     },
-    "timestamp": 1481663057
+    "timestamp": 1481677031
   },
   "Unit Tests": {
     "coverage": {
@@ -67,7 +32,6 @@
         null,
         null,
         1,
-        0,
         0,
         0,
         0,
@@ -276,6 +240,6 @@
         null
       ]
     },
-    "timestamp": 1481663057
+    "timestamp": 1481671380
   }
 }
