@@ -9,15 +9,26 @@ class Encrypter
   end
 
   def encrypt(input)
-    input.chomp.chars.each_with_index do |item, index|
-      rotor_calculation(item, index)
-      @encrypted_result << rotors.rotor_wheel.values_at(@position)
+    activate_offsets
+    input = input.chomp.chars
+    active_input = []
+    until input.empty?
+      active_input = input.shift(4)
+      active_input.each_with_index do |item, index|
+        rotor_calculation(item, index)
+        @encrypted_result << rotors.rotor_wheel.values_at(@position)
+      end
     end
     @encrypted_result.join
+    # binding.pry
+    # input.chomp.chars.each_with_index do |item, index|
+    #   rotor_calculation(item, index)
+    #   @encrypted_result << rotors.rotor_wheel.values_at(@position)
+    # end
+    # @encrypted_result.join
   end
 
   def rotor_calculation(item, index)
-    activate_offsets
     active_rotor = @rotors.rotor_wheel
     starting_poistion = @rotors.rotor_wheel.key(item)
     clicks = starting_poistion + @offset.key_offset_join[index]
