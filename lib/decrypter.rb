@@ -21,6 +21,7 @@ class Decrypter
       active_input.each_with_index do |item, index|
         rotor_calculation(item, index)
         @decrypted_result << rotors.rotor_wheel.values_at(@position)
+        binding.pry
       end
     end
   end

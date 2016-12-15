@@ -1,22 +1,18 @@
 class Enigma
   attr_reader :my_message
 
-  def initialize
-    @my_message = ""
+  def encrypt(message)
+    encrypted = Encrypter.new.encrypt(message)
+    encrypted
   end
 
-  def encrypt(message = "", key = nil, date)
-    encrypter = Encrypter.new(date)
-    read_message(message)
-    encrypter.offset.date
+  def decrypt(message, key, date)
+    decrypted = Decrypter.new.decrypt(message, key, date)
+    decrypted
   end
 
-  # def read_message(message)
-  #   @my_message = message
-  #   split_message(message)
-  # end
-  #
-  # def split_message(message)
-  #   message.chars
-  # end
+  def crack(message, date)
+    cracked = Cracker.new.crack(message, date)
+    cracked
+  end
 end

@@ -4,27 +4,29 @@ require './lib/enigma'
 require './lib/encrypter'
 require './lib/rotors'
 require './lib/key_generator'
+require './lib/decrypter'
+require './lib/cracker'
 
 class EnigmaTest < Minitest::Test
-#
-#   def test_instance_of_enigma
-#     enigma = Enigma.new
-#     assert_instance_of Enigma, enigma
-#   end
-#
-#   def test_can_send_message_to_enigma
-#     enigma = Enigma.new
-#     enigma.read_message("help")
-#     assert_equal "help", enigma.my_message
-#   end
-#
-#   def test_can_split_message
-#     enigma = Enigma.new
-#     assert_equal ["h", "e", "l", "p"], enigma.split_message("help")
-#   end
-#
-#   def test_can_send_date_to_encrypter
-#     enigma = Enigma.new
-#     assert_equal 121016, enigma.encrypt(121016)
-#   end
+
+  def test_instance_of_enigma
+    enigma = Enigma.new
+    assert_instance_of Enigma, enigma
+  end
+
+  def test_encrypted_output
+    enigma = Enigma.new
+    assert_equal 4, enigma.encrypt("wild").length
+  end
+
+  def test_decrypted_output
+    enigma = Enigma.new
+    assert_equal 4, enigma.decrypt("wild", "28453", 121016).length
+  end
+
+  def test_cracked_output
+    enigma = Enigma.new
+    assert_equal 4, enigma.crack("tile", 121016)
+  end
+
 end
