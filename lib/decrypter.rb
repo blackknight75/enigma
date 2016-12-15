@@ -1,8 +1,8 @@
 class Decrypter
-  attr_reader :offset, :position, :rotors, :encrypted_result
+  attr_reader :offset, :position, :rotors, :decrypted_result
 
-  def initialize(date = Time.now.strftime("%D").delete("/").to_i)
-    @offset = Offset.new(date)
+  def initialize
+    @offset = Offset.new
     @rotors = Rotors.new
     @position = nil
     @decrypted_result = []
@@ -11,7 +11,11 @@ class Decrypter
   def decrypt(input, message_key, message_date)
     activate_offsets(message_key, message_date)
     input = input.chomp.chars
-    active_input = []
+    send_to_decrypter_engine(input)
+    @decrypted_result.join
+  end
+
+  def send_to_decrypter_engine(input)
     until input.empty?
       active_input = input.shift(4)
       active_input.each_with_index do |item, index|
@@ -19,7 +23,6 @@ class Decrypter
         @decrypted_result << rotors.rotor_wheel.values_at(@position)
       end
     end
-    @decrypted_result.join
   end
 
   def rotor_calculation(item, index)
@@ -38,9 +41,7 @@ class Decrypter
   end
 
   def activate_offsets(message_key, message_date)
-    if message_key != nil
     @offset.key = message_key
-    end
     @offset.date = (message_date.to_i)
     @offset.date_offsets
   end

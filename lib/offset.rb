@@ -1,9 +1,9 @@
-require "pry"
+require './lib/key_generator'
 
 class Offset
 attr_reader :key_offset_join
 attr_accessor :key, :date, :date_offset
-  def initialize(date, key = KeyGenerator.new.key)
+  def initialize(key = KeyGenerator.new.key, date = Time.now.strftime("%D").delete("/").to_i)
     @date = date
     @key = key
     @date_offset = []

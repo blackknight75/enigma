@@ -20,11 +20,12 @@ class EncrypterTest < Minitest::Test
      assert encrypter.encrypt("help")
    end
 
-   def test_rotor_calculation
-     skip
+   def test_position_calculator_returns_position
      encrypter = Encrypter.new
+     encrypter.offset.key = "18473"
+     encrypter.offset.date = 121416
+     encrypter.activate_offsets
      encrypter.rotor_calculation("h", 0)
-     encrypter.offset.key = "45771"
-     assert_equal 32, encrypter.encrypted_result
+     assert_equal 30, encrypter.position
    end
 end

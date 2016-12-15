@@ -1,8 +1,8 @@
 class Encrypter
   attr_reader :offset, :position, :rotors, :encrypted_result
 
-  def initialize(date = Time.now.strftime("%D").delete("/").to_i)
-    @offset = Offset.new(date)
+  def initialize
+    @offset = Offset.new
     @rotors = Rotors.new
     @position = nil
     @encrypted_result = []
@@ -11,7 +11,11 @@ class Encrypter
   def encrypt(input)
     activate_offsets
     input = input.chomp.chars
-    active_input = []
+    send_to_encrypter_engine(input)
+    @encrypted_result.join
+  end
+
+  def send_to_encrypter_engine(input)
     until input.empty?
       active_input = input.shift(4)
       active_input.each_with_index do |item, index|
@@ -19,13 +23,6 @@ class Encrypter
         @encrypted_result << rotors.rotor_wheel.values_at(@position)
       end
     end
-    @encrypted_result.join
-    # binding.pry
-    # input.chomp.chars.each_with_index do |item, index|
-    #   rotor_calculation(item, index)
-    #   @encrypted_result << rotors.rotor_wheel.values_at(@position)
-    # end
-    # @encrypted_result.join
   end
 
   def rotor_calculation(item, index)

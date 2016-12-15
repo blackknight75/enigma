@@ -12,7 +12,6 @@ class Cracker
         @cracked =  Decrypter.new.decrypt(input, keygen, message_date)
         return @cracked if @cracked[-8..-1] == " ..end.."
       end
-    # end
     @cracked
   end
 end

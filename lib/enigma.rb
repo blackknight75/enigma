@@ -11,12 +11,12 @@ class Enigma
     encrypter.offset.date
   end
 
-  def read_message(message)
-    @my_message = message
-    split_message(message)
-  end
-
-  def split_message(message)
-    message.chars
-  end
+  # def read_message(message)
+  #   @my_message = message
+  #   split_message(message)
+  # end
+  #
+  # def split_message(message)
+  #   message.chars
+  # end
 end
